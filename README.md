@@ -55,7 +55,7 @@ JSON*:
 
 
 -------------------------
---Possible HTTP Errors:--
+**Possible HTTP Errors:**
 
 **Doesn't exist**
 
