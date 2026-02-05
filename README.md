@@ -11,6 +11,8 @@ Suppoted currencies: `btc_usd`, `eth_usd`.
 
 <h4>Prefix: /api - for all endpoints<h4>
 
+##
+
 **Get price**
 
 <code style="color : green">GET</code> /info 
