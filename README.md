@@ -29,10 +29,10 @@ Suppoted currencies: `btc_usd`, `eth_usd`.
 
 `DD.MM.YYYY.HH:mm`
 
-`D` - day
-`M` - mouth
-`Y` - year
-`H` - hour
+`D` - day,
+`M` - mouth,
+`Y` - year,
+`H` - hour,
 `m` - minutes
 
 
@@ -51,7 +51,7 @@ JSON*:
 
 \* `timestanp` will be in ISO format, `currencry` will be the requested ticker
 
-## Possible HTTP Error Responses as JSON:
+### Possible HTTP Error Responses as JSON:
 
 **Doesn't exist**
 
@@ -83,34 +83,33 @@ JSON*:
 
 ```json
 {
-    "ticker": `<str>`,
+    "ticker": <str>,
     "data": {
-        "limit": `<int>`,
-        "offset": `<int>`,
+        "limit": <int>,
+        "offset": <int>,
         "items": [
-            `<Price item>`,
+            <Price item>,
             ...
         ],
-        "total": `<int>`
+        "total": <int>
     }
 }
 ```
 
-`data` response body property will be:
+\* Response body property `data` will be:
 
-\* `limit`, `offset`, `ticker` in the response body are the same values as they were setted in request params
+`limit`, `offset`, `ticker` in the response body are the same values as they were setted in request params,
 
-\* `total` - total amount of historical prices for this `ticker`
+`total` - total amount of historical prices for this `ticker`,
 
-\* items is the list of historical prices as objects for this financial instrument `ticker` by pagination params `limit`, `offset`
+`items` is the list of historical prices as objects for this financial instrument `ticker` by pagination params `limit`, `offset`,
 
-
-\* `Price item` has next structure:
+`Price item` has next structure:
 
 ```json
 {
-    "price": `<float>`,
-    "timestamp": `<datetime>`
+    "price": <float>,
+    "timestamp": <datetime>
 }
 ```
 
