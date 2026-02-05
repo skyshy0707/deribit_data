@@ -1,6 +1,6 @@
 # Design decisions.
 
-To load currency data this project uses deribit api endpoint[https://docs.deribit.com/api-reference/market-data/public-get_index_chart_data] `public/get_index_chart_data`. As i did ivestigated at this moment no one of deribit endpoints provide currency price which supported in this project for more period than 2 days with accuracy less or equal 60 seconds. Data update every 60 seconds in our service. Comparing what time passed since last saved price data every 60 seconds our serice monitors is need to load next changes price for currencies or not.
+To load currency data this project uses deribit api endpoint[https://docs.deribit.com/api-reference/market-data/public-get_index_chart_data] `public/get_index_chart_data`. As i did ivestigated at this moment no one of deribit endpoints provide currency price which supported in this project for more period than 2 days with accuracy less or equal 60 seconds. Data is updated every 60 seconds in my service. Comparing what time passed since last saved price data every 60 seconds our serice monitors is need to load next changes price for currencies or not.
 
 This endpoint allow to load currency price for last 2 days, so if broker falls and idle more than 2 days data are loss since last time 
 is available.
@@ -23,7 +23,7 @@ Suppoted currencies: `btc_usd`, `eth_usd`.
 
 &nbsp;&nbsp;&nbsp;ticker: `<str>` Possible values: `btc_usd`, `eth_usd`
 
-&nbsp;&nbsp;&nbsp;timestamp: `<str>` optional
+&nbsp;&nbsp;&nbsp;timestamp: `<str>` optional, default current UTC time
 
 `timestamp` should be dateformat in ISO string or you can use some approachs of writing date formants described in ГОСТ Р 7.0.97-2016:
 
@@ -80,8 +80,8 @@ Status code 404
 ###### &nbsp;parameters:
 
 &nbsp;&nbsp;&nbsp;ticker: `<str>`
-&nbsp;&nbsp;&nbsp;limit: `<int>` optional default 10
-&nbsp;&nbsp;&nbsp;offset: `<int>` optional default 0
+&nbsp;&nbsp;&nbsp;limit: `<int>` optional, default 10
+&nbsp;&nbsp;&nbsp;offset: `<int>` optional, default 0
 
 ```Response``` HTTP Status 200:
 
@@ -106,7 +106,7 @@ JSON*:
 
 `limit`, `offset`, `ticker` in the response body are the same values as they were setted in request params,
 
-`total` - total amount of historical prices for this `ticker`,
+`total` - total objects of historical prices for this requested `ticker`,
 
 `items` is the list of historical prices as objects for this financial instrument `ticker` by pagination params `limit`, `offset`,
 
