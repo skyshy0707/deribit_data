@@ -1,15 +1,11 @@
 from sqlalchemy import (
-    Boolean, 
-    CheckConstraint, 
     Column, 
     DateTime, 
     Float,
-    Enum, 
     ForeignKey,
     Integer,
     String
 )
-from sqlalchemy.orm import relationship
 
 from db.engine import Base
 

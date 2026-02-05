@@ -5,8 +5,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from common_types import datetime
 from config import OBSERVED_TICKERS
 from core.loader.schemes import schemes
-from db.engine import connection
 from db import models
+from db.engine import connection
 
 
 from logger import setup_logger
@@ -34,10 +34,7 @@ def get_prices_q(currency: str) -> Select:
 async def save_current_price(session: AsyncSession, price_data: schemes.Currency):
     data = price_data.model_dump()
     try:
-        instance = (
-            await session.execute(insert(models.Price).values(**data).returning(models.Price))
-        ).scalar_one_or_none()
-
+        await session.execute(insert(models.Price).values(**data).returning(models.Price))
     except SQLAlchemyError as e:
         logger.warning(f"error occur at {e._message()}")
         raise SQLAlchemyError(e)

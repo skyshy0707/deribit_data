@@ -9,7 +9,7 @@ origins = [
 
 app = FastAPI(
     docs_url="/docs",
-    openapi_prefix="/api",
+    root_path="/api",
     title="Currencies",
     openapi_url="/api/openapi.json"
 )

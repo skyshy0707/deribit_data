@@ -6,8 +6,9 @@ from sqlalchemy.exc import OperationalError
 
 from logger import setup_logger
 from db.engine import engine
-from db.models import Base
 from db.dao import create_currencies
+from db.models import Base
+
 
 logger = setup_logger(__name__)
 TIMEOUT = 2

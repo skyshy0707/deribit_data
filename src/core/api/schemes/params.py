@@ -27,7 +27,6 @@ class Pagination(BaseModel):
     limit: int = Query(10, gt=0, le=10)
     offset: int = Query(0, ge=0)
 
-#
 class GetPrice(BaseModel):
     ticker: str = Query(serialization_alias="currency")
     timestamp: Optional[str] = Query('', serialization_alias="date")

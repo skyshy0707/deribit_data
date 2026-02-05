@@ -64,7 +64,6 @@ async def load(index_name):
                 "range": period
             }
         )
-
         results = arch_data.get("result")
         total = len(results)
         for i in range(0, total, accuracy_step):
@@ -72,7 +71,7 @@ async def load(index_name):
             timestamp = datetime.fromtimestamp(timestamp/1000, tz=UTC)
             if timestamp <= last_price.timestamp:
                 continue
-            
+
             await dao.save_current_price(
                 schemes.Currency(
                     price=price, 
@@ -82,15 +81,3 @@ async def load(index_name):
             )
             if price_monitoring(timestamp):
                 break
-
-    '''
-    data = await get_data(
-        "https://test.deribit.com/api/v2/public/get_index_price", 
-        params={
-            "index_name": index_name
-        }
-    )       
-    data["currency"] = index_name    
-    await dao.save_current_price(schemes.Currency(**data))
-
-    '''
