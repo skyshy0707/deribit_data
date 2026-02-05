@@ -122,7 +122,8 @@ JSON*:
 These properties are the same as they described for `Get price` endpoint response
 
 
-
+---------
+---------
 ## Build:
 
 ```bash
