@@ -69,6 +69,8 @@ Status code 404
 }
 ```
 
+-------------------------
+-------------------------
 **Get historical prices**
 
 <code style="color : green">GET</code> /info 
