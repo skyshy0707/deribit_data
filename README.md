@@ -54,8 +54,8 @@ JSON*:
 \* `timestanp` will be in ISO format, `currencry` will be the requested ticker
 
 
----Possible HTTP Errors:---
----------------------------
+-------------------------
+--Possible HTTP Errors:--
 
 **Doesn't exist**
 
