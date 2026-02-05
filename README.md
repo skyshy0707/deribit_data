@@ -65,7 +65,7 @@ Status code 404
 
 ```json
 {
-    "detail":  "Not found. Detail: Data are not exist for this instrument: `<ticker>` or at this time: `<timestamp>`"
+    "detail":  "Not found. Detail: Data are not exist that were requested for this instrument: `<ticker>` or at this time: `<timestamp>`"
 }
 ```
 

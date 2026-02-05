@@ -7,7 +7,7 @@ from db import dao
 async def get_currency(currency: str, date: str=None):
     data = await dao.get_price(currency, date)
     if not data:
-        return responses.NOT_FOUND(f"Data are not exist for this instrument: {currency} or at this time: {date}")
+        return responses.NOT_FOUND(f"Data are not exist that were requested for this instrument: {currency} or at this time: {date}")
     return data
 
 async def get_histiorical_prices(currency: str, pagination: params.Pagination):
