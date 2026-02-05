@@ -1,4 +1,4 @@
-# Design decisions.
+# Design decisions
 
 To load currency data this project uses deribit api endpoint[https://docs.deribit.com/api-reference/market-data/public-get_index_chart_data] `public/get_index_chart_data`. As i did ivestigated at this moment no one of deribit endpoints provide currency price which supported in this project for more period than 2 days with accuracy less or equal 60 seconds. Data is updated every 60 seconds in my service. Comparing what time passed since last saved price data every 60 seconds our serice monitors is need to load next changes price for currencies or not.
 
