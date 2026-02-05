@@ -1,0 +1,55 @@
+services:
+  server:
+    container_name:
+      server
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - 8000
+    env_file:
+      - ./.env 
+      - ./.env.database
+    ports:
+      - 9010:8000
+    tty: true
+    depends_on:
+      - database
+  database:
+    image: postgres:latest
+    env_file:
+      ./.env.database
+    ports:
+      - "5536:5432"
+    restart:
+        unless-stopped
+  worker:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: celery -A core.loader.scheduler:app worker --loglevel=debug --concurrency 1 -E --purge
+    env_file:
+      - ./.env
+      - ./.env.database
+    depends_on:
+      - server
+      - broker
+  celery_beat:
+    restart: always
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ./.env
+      - ./.env.database
+    command: celery -A core.loader.scheduler:app beat --loglevel=debug
+    depends_on:
+      - worker
+  broker:
+    restart: unless-stopped
+    image: redis:6.2.12
+    env_file:
+      ./.env 
+    expose: 
+      - 6379
