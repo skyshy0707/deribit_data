@@ -80,8 +80,11 @@ Status code 404
 ###### &nbsp;parameters:
 
 &nbsp;&nbsp;&nbsp;ticker: `<str>`
+
 &nbsp;&nbsp;&nbsp;limit: `<int>` optional, default 10
+
 &nbsp;&nbsp;&nbsp;offset: `<int>` optional, default 0
+
 
 ```Response``` HTTP Status 200:
 
