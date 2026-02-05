@@ -51,11 +51,13 @@ JSON*:
 
 \* `timestanp` will be in ISO format, `currencry` will be the requested ticker
 
-### Possible HTTP Error Responses as JSON:
+-------------------------------
+**---Possible HTTP Errors:---**
+-------------------------------
 
 **Doesn't exist**
 
-Occur at the request and if price data not exist by these params `ticker`, `timestamp`
+Occurs if price data not exist by these params `ticker`, `timestamp`
 
 Status code 404
 
