@@ -9,7 +9,7 @@ Suppoted currencies: `btc_usd`, `eth_usd`.
 
 To monitor only two currencies it's enought to have one celery worker process which load last prices for less than one second.
 
-`Currency monitoring` - it's process fetch data from using deribit api endpoint and load it to our server through processing and inserting data to
+`Currency monitoring` - it's process of fetching data from using deribit api endpoint and load it to our server through processing and inserting data to
 the database.
 
 # API
