@@ -13,6 +13,11 @@ from logger import setup_logger
 logs = setup_logger(__name__)
 
 
+class ErrorCodes:
+
+    api_err = lambda data: data.get("error", {}).get("code") == 10028
+
+
 async def get_data(url, params):
     async with aiohttp.ClientSession() as session:
         while True:
@@ -25,7 +30,7 @@ async def get_data(url, params):
                     except json.JSONDecodeError as e:
                         logs.warning(f"Fail to load price. Detail: {e.msg}, args: {e.args}")
                         continue
-                    if data.get("error", {}).get("code") == 10028:
+                    if ErrorCodes.api_err(data):
                         continue
                     else: 
                         return data
