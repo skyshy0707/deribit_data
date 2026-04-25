@@ -1,4 +1,5 @@
 import aiohttp
+import asyncio
 from datetime import timedelta
 import json
 
@@ -31,6 +32,8 @@ async def get_data(url, params):
             except aiohttp.ClientError as e:
                 logs.warning(f"Fail to load price. Detail: {e.__traceback__}, args: {e.args}")
                 break
+            except aiohttp.ConnectionTimeoutError:
+                await asyncio.sleep(18)
 
 
 def price_monitoring(last_price_timestamp: datetime):
